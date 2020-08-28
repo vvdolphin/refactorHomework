@@ -1,18 +1,15 @@
 function deliveryDate (anOrder, isRush) {
   if (isRush) {
-    let deliveryTime = getRushDeliveryTime(anOrder);
-    return anOrder.placedOn.plusDays(1 + deliveryTime);
+    return anOrder.placedOn.plusDays(1 + getRushDeliveryTime(anOrder));
   }
   else {
-    let deliveryTime = getDeliveryTime(anOrder);
-    return anOrder.placedOn.plusDays(2 + deliveryTime);
+    return anOrder.placedOn.plusDays(2 + getDeliveryTime(anOrder));
   }
 }
 
 module.exports= {
   deliveryDate,
 }
-
 
 function getDeliveryTime(anOrder) {
   let deliveryTime;
@@ -22,16 +19,16 @@ function getDeliveryTime(anOrder) {
     'NY',
   ].includes(anOrder.deliveryState)) {
     deliveryTime = 2;
+    return deliveryTime;
   }
-  else if ([
+  if ([
     'ME',
     'NH',
   ].includes(anOrder.deliveryState)) {
     deliveryTime = 3;
+    return deliveryTime;
   }
-  else {
-    deliveryTime = 4;
-  }
+  deliveryTime = 4;
   return deliveryTime;
 }
 
