@@ -2,7 +2,6 @@ function deliveryDate (anOrder, isRush) {
 
   let number = isRush? getRushDeliveryTime(anOrder)+1:getDeliveryTime(anOrder)+2
   return number;
- 
 }
 
 module.exports= {
