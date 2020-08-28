@@ -11,20 +11,18 @@ module.exports= {
   deliveryDate,
 }
 
+function isIncludes(anOrder, value){
+  return value.includes(anOrder.deliveryState);
+}
+
 function getDeliveryTime(anOrder) {
   let deliveryTime;
-  if ([
-    'MA',
-    'CT',
-    'NY',
-  ].includes(anOrder.deliveryState)) {
+  if (isIncludes(anOrder,['MA','CT','NY'])) {
     deliveryTime = 2;
     return deliveryTime;
   }
-  if ([
-    'ME',
-    'NH',
-  ].includes(anOrder.deliveryState)) {
+
+  if (isIncludes(anOrder,['ME','NH'])) {
     deliveryTime = 3;
     return deliveryTime;
   }
@@ -34,21 +32,15 @@ function getDeliveryTime(anOrder) {
 
 function getRushDeliveryTime(anOrder) {
   let deliveryTime;
-  if ([
-    'MA',
-    'CT',
-  ].includes(anOrder.deliveryState)) {
+  if (isIncludes(anOrder,['MA','CT'])) {
     deliveryTime = 1;
+    return deliveryTime;
   }
-  else if ([
-    'NY',
-    'NH',
-  ].includes(anOrder.deliveryState)) {
+ if (isIncludes(anOrder,['NY','NH'])) {
     deliveryTime = 2;
+    return deliveryTime;
   }
-  else {
-    deliveryTime = 3;
-  }
+  deliveryTime = 3;
   return deliveryTime;
 }
 
