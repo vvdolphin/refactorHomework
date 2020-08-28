@@ -1,10 +1,8 @@
 function deliveryDate (anOrder, isRush) {
-  if (isRush) {
-    return anOrder.placedOn.plusDays(1 + getRushDeliveryTime(anOrder));
-  }
-  else {
-    return anOrder.placedOn.plusDays(2 + getDeliveryTime(anOrder));
-  }
+
+  let number = isRush? getRushDeliveryTime(anOrder)+1:getDeliveryTime(anOrder)+2
+  return number;
+ 
 }
 
 module.exports= {
