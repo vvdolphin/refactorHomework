@@ -18,5 +18,3 @@ test('test1 MA true', t=>{
 
 
 
-
-
