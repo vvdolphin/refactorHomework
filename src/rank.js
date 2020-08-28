@@ -31,27 +31,34 @@ function isExist(voyage){
   return voyage.zone === 'china' || voyage.zone === 'east-indies'
 }
 
-function judgeLength(voyage,history){
-  return history.length > 10 || voyage.length > 12;
-}
-
 function isInChina(voyage,history){
   return voyage.zone === 'china' && hasChina(history);
 }
 
 function voyageProfitFactor (voyage, history) {
   let result = 2;
-  if(isExist(voyage)){
-    result += 1;
-  }
+  result = isExist(voyage) ? result+1:result;
+
   if (isInChina(voyage,history)) {
-    result += 3;
-    result = judgeLength(voyage,history) ? result + 1:result;
-    result = voyage.length > 18 ? result - 1:result;
+    result += getResult(history, voyage);
     return result;
   }
+
+
   result = history.length > 8 ? result + 1: result;
   result = voyage.length > 14 ? result - 1: result;
+  return result;
+}
+
+function getResult(history, voyage) {
+  let result = 3;
+  if (history.length > 10) {
+    result += 1;
+  }
+  if (voyage.length > 12) {
+    result += 1;
+  }
+  result = voyage.length > 18 ? result - 1 : result;
   return result;
 }
 
