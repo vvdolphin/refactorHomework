@@ -1,7 +1,6 @@
 function printOwing (invoice) {
-  let outstanding = 0;
   logStart();
-  outstanding = getOutstanding(invoice);
+  let outstanding = getOutstanding(invoice);
   recordDueDate(invoice);
   logEnd(invoice, outstanding);
 }
