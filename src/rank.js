@@ -1,10 +1,15 @@
 function voyageRisk (voyage) {
   let result = 1;
-  result = voyage.length > 4 ? result+2:result;
-  result = voyage.length > 8 ? result+voyage.length - 8:result;
+  result += judgeVoyageLength(voyage);
 
   result += judgeZone(voyage, result);
   return Math.max(result, 0);
+}
+
+function judgeVoyageLength(voyage) {
+  let result = voyage.length > 4 ? 2 : 0;
+  result = voyage.length > 8 ? result + voyage.length - 8 : result;
+  return result;
 }
 
 function judgeZone(voyage) {
