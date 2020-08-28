@@ -16,31 +16,24 @@ function isIncludes(anOrder, value){
 }
 
 function getDeliveryTime(anOrder) {
-  let deliveryTime;
+  
   if (isIncludes(anOrder,['MA','CT','NY'])) {
-    deliveryTime = 2;
-    return deliveryTime;
+     return 2;
   }
 
   if (isIncludes(anOrder,['ME','NH'])) {
-    deliveryTime = 3;
-    return deliveryTime;
+    return 3;
   }
-  deliveryTime = 4;
-  return deliveryTime;
+  return 4;
 }
 
 function getRushDeliveryTime(anOrder) {
-  let deliveryTime;
   if (isIncludes(anOrder,['MA','CT'])) {
-    deliveryTime = 1;
-    return deliveryTime;
+    return 1;
   }
  if (isIncludes(anOrder,['NY','NH'])) {
-    deliveryTime = 2;
-    return deliveryTime;
+    return 2;
   }
-  deliveryTime = 3;
-  return deliveryTime;
+  return 3;
 }
 
